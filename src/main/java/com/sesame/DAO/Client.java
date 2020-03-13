@@ -1,4 +1,4 @@
-package com.example.DAO;
+package com.sesame.DAO;
 
 import java.io.Serializable;
 import java.util.Collection;
@@ -11,10 +11,12 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
+import javax.persistence.Table;
 
 
 
 @Entity
+@Table(name="Client")
 public class Client implements Serializable{
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -29,8 +31,10 @@ public class Client implements Serializable{
 	  @OneToOne
 	   @JoinColumn(name="num_compte")
 	   private Compte compte;
-	  @OneToMany(mappedBy="Client", cascade=CascadeType.ALL)
+	  @OneToMany(mappedBy="client", cascade=CascadeType.ALL)
 	  private Collection<Vehicule> Vehicules;
+	  
+	  
 	public String getNomC() {
 		return nomC;
 	}
@@ -94,9 +98,6 @@ public class Client implements Serializable{
 		super();
 		// TODO Auto-generated constructor stub
 	}
-	
-	  
-	  
 	
 
 }

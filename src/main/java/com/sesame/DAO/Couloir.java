@@ -1,4 +1,4 @@
-package com.example.DAO;
+package com.sesame.DAO;
 
 import java.io.Serializable;
 
@@ -9,18 +9,26 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToOne;
+import javax.persistence.Table;
 
 @Entity
+@Table(name="Couloir")
 public class Couloir implements Serializable {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long Id; 
-	 @ManyToOne
-	 @JoinColumn(name="codeCentre")
-	 private  CentreVisite centre;
-	 @OneToOne
-	   @JoinColumn(name="num_chef")
-	   private ChefCouloir chefC;
+
+	@ManyToOne
+    @JoinColumn(name="centre_id")
+    private CentreVisite centre;
+	
+	
+	@OneToOne
+	@JoinColumn(name="num_chef")   
+	private ChefCouloir chefC;
+	
+	
+	
 	public Long getId() {
 		return Id;
 	}
@@ -53,7 +61,7 @@ public class Couloir implements Serializable {
 		super();
 		// TODO Auto-generated constructor stub
 	}
-	 
+	
 	 
 	 
 	 
