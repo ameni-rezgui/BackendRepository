@@ -1,4 +1,4 @@
-package com.example.DAO;
+package com.sesame.DAO;
 
 import java.io.Serializable;
 import java.util.Date;
@@ -10,12 +10,15 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToOne;
+import javax.persistence.Table;
 
 
 
 @Entity
+@Table(name="Vehicules")
 public class Vehicule implements Serializable {
 	
+
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long IdV;
@@ -28,8 +31,8 @@ public class Vehicule implements Serializable {
 	
 	
 	@ManyToOne
-	@JoinColumn(name="codeClient")
-	private  Client clients;
+	@JoinColumn(name="code_Client")
+	private  Client client;
 	@OneToOne
 	   @JoinColumn(name="num_rendezVous")
 	   private RendezVous rendezVous;
@@ -95,11 +98,11 @@ public class Vehicule implements Serializable {
 	}
 
 	public Client getClients() {
-		return clients;
+		return client;
 	}
 
 	public void setClients(Client clients) {
-		this.clients = clients;
+		this.client = clients;
 	}
 
 	public RendezVous getRendezVous() {
@@ -122,7 +125,7 @@ public class Vehicule implements Serializable {
 	public String toString() {
 		return "Vehicule [IdV=" + IdV + ", matricule=" + matricule + ", typeV=" + typeV + ", dateSortie=" + dateSortie
 				+ ", age=" + age + ", kilometrage=" + kilometrage + ", nbCylindre=" + nbCylindre + ", clients="
-				+ clients + ", rendezVous=" + rendezVous + ", marque=" + marque + "]";
+				+ client + ", rendezVous=" + rendezVous + ", marque=" + marque + "]";
 	}
 
 	public Vehicule(Long idV, String matricule, String typeV, Date dateSortie, int age, String kilometrage,
@@ -135,7 +138,7 @@ public class Vehicule implements Serializable {
 		this.age = age;
 		this.kilometrage = kilometrage;
 		this.nbCylindre = nbCylindre;
-		this.clients = clients;
+		this.client = clients;
 		this.rendezVous = rendezVous;
 		this.marque = marque;
 	}
@@ -145,5 +148,6 @@ public class Vehicule implements Serializable {
 		// TODO Auto-generated constructor stub
 	}
 	
+
 	
 }

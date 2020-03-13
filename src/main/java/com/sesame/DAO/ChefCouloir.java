@@ -1,4 +1,4 @@
-package com.example.DAO;
+package com.sesame.DAO;
 
 import java.io.Serializable;
 
@@ -8,8 +8,10 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.OneToOne;
+import javax.persistence.Table;
 
 @Entity
+@Table(name="ChefCouloir")
 public class ChefCouloir implements Serializable{
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -72,7 +74,7 @@ public class ChefCouloir implements Serializable{
 		// TODO Auto-generated constructor stub
 	}
 	 
-	 
+	
 	 
 	 
 

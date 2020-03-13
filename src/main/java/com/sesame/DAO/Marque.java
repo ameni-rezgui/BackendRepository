@@ -1,4 +1,4 @@
-package com.example.DAO;
+package com.sesame.DAO;
 
 import java.io.Serializable;
 import java.util.Collection;
@@ -9,8 +9,10 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
+import javax.persistence.Table;
 
 @Entity
+@Table(name="Marque")
 public class Marque implements Serializable{
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -19,7 +21,7 @@ public class Marque implements Serializable{
 	private String modele; 
 	private String gamme; 
 	
-	  @OneToMany(mappedBy="Marque", cascade=CascadeType.ALL)
+	  @OneToMany(mappedBy="marque", cascade=CascadeType.ALL)
 	  private Collection<Vehicule> Vehicules;
 
 	public Long getIdM() {
