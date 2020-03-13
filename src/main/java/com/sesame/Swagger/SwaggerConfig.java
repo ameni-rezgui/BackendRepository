@@ -1,4 +1,4 @@
-package com.example.Sawagger;
+package com.sesame.Swagger;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
