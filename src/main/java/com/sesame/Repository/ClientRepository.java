@@ -22,7 +22,7 @@ public interface ClientRepository  extends JpaRepository<Client, Long > {
 	
 	public List<Client> findByPrenomC(String prenom); 
 	
-	public Client findByCINC(String cin); 
+	 Client findByCINC(String cin); 
 	
 	
 }
