@@ -39,14 +39,14 @@ public class Client implements Serializable{
 		return nomC;
 	}
 	public void setNomC(String nomC) {
-		int t=1;
+		int tt=1;
 		if(nomC.length()<=5)
-			t*=0;
+			tt*=0;
 		for(int i =0 ;i<nomC.length();i++) {
 			 if((nomC.charAt(i)<65)||(nomC.charAt(i)>122)||((nomC.charAt(i)<96)&&(nomC.charAt(i)>91)))
-		           t*=0;
+		            tt*=0;
 			 }
-			 if(t==1)
+			 if(tt==1)
 				 this.nomC = nomC;
 	}
 	
