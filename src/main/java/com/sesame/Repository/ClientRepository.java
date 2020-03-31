@@ -1,7 +1,7 @@
 package com.sesame.Repository;
 
 import java.util.List;
-
+import java.util.Optional;
 
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
@@ -13,7 +13,7 @@ import com.sesame.DAO.Client;
 
 public interface ClientRepository  extends JpaRepository<Client, Long > {
 
-	public List<Client> findByNomC(String nom);
+	public Optional<Client> findByNomC(String nom);
 	
 	// pageable  : objet ou on va définit le taille d'une page
 	public Page<Client> findByNomC(String nom, Pageable p );

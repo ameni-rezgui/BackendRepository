@@ -1,7 +1,7 @@
 package com.sesame.MetierService;
 
 import java.util.Collection;
-
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -31,6 +31,11 @@ public class ClientMetierService implements ClientMetierInterface {
 	@Override
 	public Client add (Client c ) {
 		return urc.save(c);
+	}
+	@Override
+	public Optional<Client> getName(String name) {
+		// TODO Auto-generated method stub
+		return urc.findByNomC(name);
 	}
 }
 

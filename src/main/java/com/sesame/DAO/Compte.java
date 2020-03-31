@@ -19,10 +19,16 @@ public class Compte implements Serializable{
 	private Long Id;
 	private String login ; 
 	private String mdp ; 
-	
+	private String role;
+	private boolean Active ;
 	 @OneToOne
 	   @JoinColumn(name="num_client")
 	   private Client client;
+
+
+	public void setRole(String role) {
+		this.role = role;
+	}
 
 	public Long getId() {
 		return Id;
@@ -56,22 +62,35 @@ public class Compte implements Serializable{
 		this.client = client;
 	}
 
+	public boolean getActive() {
+		return Active;
+	}
+
+	public void setActive(boolean active) {
+		Active = active;
+	}
+
 	@Override
 	public String toString() {
 		return "Compte [Id=" + Id + ", login=" + login + ", mdp=" + mdp + ", client=" + client + "]";
 	}
 
-	public Compte(Long id, String login, String mdp, Client client) {
+	public Compte(Compte cpt) {
 		super();
-		Id = id;
-		this.login = login;
-		this.mdp = mdp;
-		this.client = client;
+		this.Id = cpt.getId();
+		this.login = cpt.getLogin();
+		this.mdp =cpt.getMdp();
+		this.client =cpt.getClient();
+		this.Active=cpt.getActive();
 	}
 
 	public Compte() {
 		super();
 		// TODO Auto-generated constructor stub
+	}
+
+	public String getRole() {
+		return role;
 	}
 	 
 	 

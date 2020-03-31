@@ -24,6 +24,7 @@ public class Client implements Serializable{
 	private String nomC; 
 	private String prenomC; 
 	private String CINC; 
+	private boolean Active ;
 	
 	  @OneToOne
 	   @JoinColumn(name="num_adr")
@@ -107,6 +108,12 @@ public class Client implements Serializable{
 	}
 	public void setVehicules(Collection<Vehicule> vehicules) {
 		Vehicules = vehicules;
+	}
+	public boolean getActive() {
+		return Active;
+	}
+	public void setActive(boolean active) {
+		Active = active;
 	}
 	@Override
 	public String toString() {
