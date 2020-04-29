@@ -13,10 +13,8 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.sesame.DAO.Client;
-import com.sesame.DAO.Vehicule;
-import com.sesame.MetierInterface.ClientMetierInterface;
-import com.sesame.MetierInterface.VehiculeMetierInterface;
+import com.sesame.DAO.vehicule;
+import com.sesame.MetierService.VehiculeMetierInterface;
 
 @RestController
 @RequestMapping("/Vehicule")
@@ -27,18 +25,18 @@ public class VehiculeRest {
 	
 	
 	@PostMapping("/add") 
-	public void save(@RequestBody Vehicule vehicule)
+	public void save(@RequestBody vehicule vehicule)
 	
 	{	CF.add(vehicule);
 	}
 	
 	@GetMapping("/get")
-	public Collection<Vehicule> findALL()
+	public Collection<vehicule> findALL()
 	{
 		return CF.getAll();
 	}
 	@GetMapping("/get/{id}")
-	public Vehicule findById(@PathVariable Long id)
+	public vehicule findById(@PathVariable Long id)
 	{
 		return CF.getId(id);
 	}
@@ -51,10 +49,10 @@ public class VehiculeRest {
 	}
 	@PutMapping("edit/{id}")  // modification
 
-	public void update(@PathVariable Long id , @RequestBody Vehicule vehicule)
+	public void update(@PathVariable Long id , @RequestBody vehicule vehicule)
 	
 	{
-		vehicule.setIdV(id);
+		vehicule.setID_V(id);
 		CF.add(vehicule)	;
 	}
 	
