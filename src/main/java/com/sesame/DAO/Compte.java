@@ -3,97 +3,63 @@ package com.sesame.DAO;
 import java.io.Serializable;
 
 import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
 import javax.persistence.OneToOne;
-import javax.persistence.Table;
-
 
 @Entity
-@Table(name="Compte")
-public class Compte implements Serializable{
+public class Compte implements Serializable {
 	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private Long Id;
-	private String login ; 
-	private String mdp ; 
-	private String role;
-	private boolean Active ;
-	 @OneToOne
-	   @JoinColumn(name="num_client")
-	   private Client client;
-
-
-	public void setRole(String role) {
-		this.role = role;
+	private long id;
+	private String Login;
+	private String password;
+	private String roles;
+	private boolean Active;
+	@OneToOne(mappedBy = "compte")
+	private Client client;
+	@OneToOne(mappedBy = "compte")
+	private Chef_couloir chef_coloir;
+	public long getId() {
+		return id;
 	}
-
-	public Long getId() {
-		return Id;
+	public void setId(long id) {
+		this.id = id;
 	}
-
-	public void setId(Long id) {
-		Id = id;
-	}
-
 	public String getLogin() {
-		return login;
+		return Login;
 	}
-
 	public void setLogin(String login) {
-		this.login = login;
+		Login = login;
 	}
-
-	public String getMdp() {
-		return mdp;
+	public String getPassword() {
+		return password;
 	}
-
-	public void setMdp(String mdp) {
-		this.mdp = mdp;
+	public void setPassword(String password) {
+		this.password = password;
 	}
-
-	public Client getClient() {
-		return client;
+	public String getRoles() {
+		return roles;
 	}
-
-	public void setClient(Client client) {
-		this.client = client;
+	public void setRoles(String roles) {
+		this.roles = roles;
 	}
-
-	public boolean getActive() {
+	public boolean isActive() {
 		return Active;
 	}
-
 	public void setActive(boolean active) {
 		Active = active;
 	}
-
-	@Override
-	public String toString() {
-		return "Compte [Id=" + Id + ", login=" + login + ", mdp=" + mdp + ", client=" + client + "]";
+	public Client getClient() {
+		return client;
 	}
-
-	public Compte(Compte cpt) {
-		super();
-		this.Id = cpt.getId();
-		this.login = cpt.getLogin();
-		this.mdp =cpt.getMdp();
-		this.client =cpt.getClient();
-		this.Active=cpt.getActive();
+	public void setClient(Client client) {
+		this.client = client;
 	}
-
-	public Compte() {
-		super();
-		// TODO Auto-generated constructor stub
+	public Chef_couloir getChef_coloir() {
+		return chef_coloir;
 	}
-
-	public String getRole() {
-		return role;
+	public void setChef_coloir(Chef_couloir chef_coloir) {
+		this.chef_coloir = chef_coloir;
 	}
-	 
-	 
 	
 
 }

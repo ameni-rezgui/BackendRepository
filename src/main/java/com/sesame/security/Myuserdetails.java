@@ -1,35 +1,36 @@
-package com.sesame;
+package com.sesame.security;
 
 import java.util.Arrays;
 import java.util.Collection;
 import java.util.List;
 import java.util.stream.Collectors;
 
+import org.springframework.context.annotation.Configuration;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
 import com.sesame.DAO.Client;
 
-public class MyUserdetail implements UserDetails{
-	private String userName;
+public class Myuserdetails implements UserDetails{
+	private String usrename;
 	private String password;
-	private boolean active;
-	private List<GrantedAuthority> authoroties;
-	public MyUserdetail(Client cl) {
-		this.userName=cl.getNomC();
-		this.password=cl.getCompte().getMdp();
-		this.active=cl.getActive();
-		this.authoroties=Arrays.stream(cl.getCompte().getRole().split(","))
-		.map(SimpleGrantedAuthority::new)
-		.collect(Collectors.toList());
-		 	
+	private  List<GrantedAuthority> authorities;
+	public Myuserdetails(Client s) {
+		this.usrename=s.getCompte().getLogin();
+		this.password=s.getCompte().getPassword();
+		this.authorities = Arrays.stream(s.getCompte().getRoles().split(","))
+				.map(SimpleGrantedAuthority::new)
+				.collect(Collectors.toList());
+				
+		
 	}
+	
 
 	@Override
 	public Collection<? extends GrantedAuthority> getAuthorities() {
 		// TODO Auto-generated method stub
-		return authoroties;
+		return authorities;
 	}
 
 	@Override
@@ -41,7 +42,7 @@ public class MyUserdetail implements UserDetails{
 	@Override
 	public String getUsername() {
 		// TODO Auto-generated method stub
-		return userName;
+		return usrename;
 	}
 
 	@Override
@@ -65,7 +66,8 @@ public class MyUserdetail implements UserDetails{
 	@Override
 	public boolean isEnabled() {
 		// TODO Auto-generated method stub
-		return active;
+		return true;
 	}
+	
 
 }

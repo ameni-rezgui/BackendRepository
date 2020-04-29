@@ -13,10 +13,8 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.sesame.DAO.Client;
 import com.sesame.DAO.Marque;
-import com.sesame.MetierInterface.ClientMetierInterface;
-import com.sesame.MetierInterface.MarqueMetierInterface;
+import com.sesame.MetierService.MarqueMetierInterface;
 
 @RestController
 @RequestMapping("/Marque")
@@ -54,7 +52,7 @@ public class MarqueRest {
 	public void update(@PathVariable Long id , @RequestBody Marque marque)
 	
 	{
-		marque.setIdM(id);
+		marque.setID_Marque(id);
 		CF.add(marque)	;
 	}
 	

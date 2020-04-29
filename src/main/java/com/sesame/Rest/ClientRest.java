@@ -1,7 +1,9 @@
 package com.sesame.Rest;
 
 import java.util.Collection;
+import java.util.Optional;
 
+import org.hibernate.service.spi.InjectService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.CrossOrigin;
@@ -15,17 +17,19 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.sesame.DAO.Client;
-import com.sesame.MetierInterface.ClientMetierInterface;
+import com.sesame.MetierService.ClientMetierInterface;
+import com.sesame.Repository.ClientRepository;
+
 
 
 @RestController
 @RequestMapping("/Client")
-@CrossOrigin("*")
+@CrossOrigin(origins = "*")
 public class ClientRest {
-
 	@Autowired
 	private  ClientMetierInterface CF;
-	
+	@Autowired
+   private ClientRepository cr;	
 	
 	@PostMapping("/add") 
 	public void save(@RequestBody Client client)
@@ -43,12 +47,8 @@ public class ClientRest {
 	{
 		return CF.getId(id);
 	}
-	@PreAuthorize("hasAnyRole('ADMIN')")
-	@GetMapping("/login")
-	public String login()
-	{
-		return "conecte";
-	}
+
+	
 	
 	@DeleteMapping("/supprimer/{id}")
 	public void supprimer(@PathVariable Long id) {
@@ -60,7 +60,7 @@ public class ClientRest {
 	public void update(@PathVariable Long id , @RequestBody Client client)
 	
 	{
-		client.setIdC(id);
+		client.setID_CL(id);
 		CF.add(client)	;
 	}
 	

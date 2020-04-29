@@ -1,101 +1,117 @@
 package com.sesame.DAO;
 
 import java.io.Serializable;
-import java.util.Collection;
+import java.util.List;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
+import javax.persistence.ManyToMany;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
-import javax.persistence.Table;
-
-
 
 @Entity
-@Table(name="Client")
-public class Client implements Serializable{
+public class Client implements Serializable {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private Long IdC; 
-	private String nomC; 
-	private String prenomC; 
-	private String CINC; 
-	private boolean Active ;
-	
-	  @OneToOne
-	   @JoinColumn(name="num_adr")
-	   private Adresse adresse;
-	  @OneToOne
-	   @JoinColumn(name="num_compte")
-	   private Compte compte;
-	  @OneToMany(mappedBy="client", cascade=CascadeType.ALL)
-	  private Collection<Vehicule> Vehicules;
-	  
-	  
-	public String getNomC() {
-		return nomC;
+	private long ID_CL; 
+	private String cin_CL;
+	private String Nom_CL;
+	private String Date_Naissance_CL;
+	private int Age_CL;
+	private String  Numero_Tle_CL;
+	private String Email_CL;
+	private String Region_CL;
+	private String Ville_CL;
+	private String Code_postale_CL;
+	private String Numero_Permis_conduite_CL;
+	@OneToOne(cascade = CascadeType.ALL)
+	@JoinColumn(name="Compte_ID")
+	private Compte compte;
+	@OneToMany(
+			mappedBy = "client",
+			fetch = FetchType.LAZY)
+	private List<vehicule> vehicules ;
+	@ManyToMany(
+			fetch = FetchType.LAZY)
+			@JoinTable(
+					name="Client_Date_De_Travail",
+
+					joinColumns=@JoinColumn(name="Clietn_id"),
+					inverseJoinColumns =@JoinColumn(name="Date_De_Travails_id")
+				
+					)		
+    private List<Date_De_Travail> Date_De_Travails;
+	public long getID_CL() {
+		return ID_CL;
 	}
-	public void setNomC(String nomC) {
-		int tt=1;
-		if(nomC.length()<=5)
-			tt*=0;
-		for(int i =0 ;i<nomC.length();i++) {
-			 if((nomC.charAt(i)<65)||(nomC.charAt(i)>122)||((nomC.charAt(i)<96)&&(nomC.charAt(i)>91)))
-		            tt*=0;
-			 }
-			 if(tt==1)
-				 this.nomC = nomC;
+	public void setID_CL(long iD_CL) {
+		ID_CL = iD_CL;
 	}
-	
-	public Long getIdC() {
-		return IdC;
+	public String getCin_CL() {
+		return cin_CL;
 	}
-	public void setIdC(Long idC) {
-		IdC = idC;
+	public void setCin_CL(String cin_CL) {
+		this.cin_CL = cin_CL;
 	}
-	public String getPrenomC() {
-		
-	
-		return prenomC;
+	public String getNom_CL() {
+		return Nom_CL;
 	}
-	public void setPrenomC(String prenomC) {
-		int t=1;
-		if(prenomC.length()<=5)
-			t*=0;
-		for(int i =0 ;i<nomC.length();i++) {
-			 if((prenomC.charAt(i)<65)||(prenomC.charAt(i)>122)||((prenomC.charAt(i)<96)&&(prenomC.charAt(i)>91)))
-		           t*=0;
-			 }
-			 if(t==1)
-		this.prenomC = prenomC;
+	public void setNom_CL(String nom_CL) {
+		Nom_CL = nom_CL;
 	}
-	public String getCINC() {
-		return CINC;
+	public String getDate_Naissance_CL() {
+		return Date_Naissance_CL;
 	}
-	public void setCINC(String cINC) {
-		int t=1;
-		if(cINC.length() != 8)
-			t*=0;
-		for(int i =0 ;i<8;i++) {
-			 if((cINC.charAt(i)-48<=0)&&(cINC.charAt(i)-48>=9))
-       		  {    t*=0;
-			       break ;
-			       }
-			        }
-		
-		 
-		if(t==1)
-		     this.CINC = cINC;
+	public void setDate_Naissance_CL(String date_Naissance_CL) {
+		Date_Naissance_CL = date_Naissance_CL;
 	}
-	public Adresse getAdresse() {
-		return adresse;
+	public int getAge_CL() {
+		return Age_CL;
 	}
-	public void setAdresse(Adresse adresse) {
-		this.adresse = adresse;
+	public void setAge_CL(int age_CL) {
+		Age_CL = age_CL;
+	}
+	public String getNumero_Tle_CL() {
+		return Numero_Tle_CL;
+	}
+	public void setNumero_Tle_CL(String numero_Tle_CL) {
+		Numero_Tle_CL = numero_Tle_CL;
+	}
+	public String getEmail_CL() {
+		return Email_CL;
+	}
+	public void setEmail_CL(String email_CL) {
+		Email_CL = email_CL;
+	}
+	public String getRegion_CL() {
+		return Region_CL;
+	}
+	public void setRegion_CL(String region_CL) {
+		Region_CL = region_CL;
+	}
+	public String getVille_CL() {
+		return Ville_CL;
+	}
+	public void setVille_CL(String ville_CL) {
+		Ville_CL = ville_CL;
+	}
+	public String getCode_postale_CL() {
+		return Code_postale_CL;
+	}
+	public void setCode_postale_CL(String code_postale_CL) {
+		Code_postale_CL = code_postale_CL;
+	}
+	public String getNumero_Permis_conduite_CL() {
+		return Numero_Permis_conduite_CL;
+	}
+	public void setNumero_Permis_conduite_CL(String numero_Permis_conduite_CL) {
+		Numero_Permis_conduite_CL = numero_Permis_conduite_CL;
 	}
 	public Compte getCompte() {
 		return compte;
@@ -103,38 +119,45 @@ public class Client implements Serializable{
 	public void setCompte(Compte compte) {
 		this.compte = compte;
 	}
-	public Collection<Vehicule> getVehicules() {
-		return Vehicules;
+	public List<vehicule> getVehicules() {
+		return vehicules;
 	}
-	public void setVehicules(Collection<Vehicule> vehicules) {
-		Vehicules = vehicules;
+	public void setVehicules(List<vehicule> vehicules) {
+		this.vehicules = vehicules;
 	}
-	public boolean getActive() {
-		return Active;
+	public List<Date_De_Travail> getDate_De_Travails() {
+		return Date_De_Travails;
 	}
-	public void setActive(boolean active) {
-		Active = active;
+	public void setDate_De_Travails(List<Date_De_Travail> date_De_Travails) {
+		Date_De_Travails = date_De_Travails;
 	}
-	@Override
-	public String toString() {
-		return "Client [IdC=" + IdC + ", nomC=" + nomC + ", prenomC=" + prenomC + ", CINC=" + CINC + ", adresse="
-				+ adresse + ", compte=" + compte + ", Vehicules=" + Vehicules + "]";
-	}
-	public Client(Long idC, String nomC, String prenomC, String cINC, Adresse adresse, Compte compte,
-			Collection<Vehicule> vehicules) {
+	public Client(long iD_CL, String cin_CL, String nom_CL, String date_Naissance_CL, int age_CL, String numero_Tle_CL,
+			String email_CL, String region_CL, String ville_CL, String code_postale_CL,
+			String numero_Permis_conduite_CL, Compte compte, List<vehicule> vehicules,
+			List<Date_De_Travail> date_De_Travails) {
 		super();
-		IdC = idC;
-		this.nomC = nomC;
-		this.prenomC = prenomC;
-		CINC = cINC;
-		this.adresse = adresse;
+		ID_CL = iD_CL;
+		this.cin_CL = cin_CL;
+		Nom_CL = nom_CL;
+		Date_Naissance_CL = date_Naissance_CL;
+		Age_CL = age_CL;
+		Numero_Tle_CL = numero_Tle_CL;
+		Email_CL = email_CL;
+		Region_CL = region_CL;
+		Ville_CL = ville_CL;
+		Code_postale_CL = code_postale_CL;
+		Numero_Permis_conduite_CL = numero_Permis_conduite_CL;
 		this.compte = compte;
-		Vehicules = vehicules;
+		this.vehicules = vehicules;
+		Date_De_Travails = date_De_Travails;
 	}
 	public Client() {
-		super();
-		// TODO Auto-generated constructor stub
+		
 	}
+	
+
+	
+	
 	
 
 }

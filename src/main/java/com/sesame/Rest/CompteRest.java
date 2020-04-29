@@ -13,10 +13,9 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.sesame.DAO.Client;
 import com.sesame.DAO.Compte;
-import com.sesame.MetierInterface.ClientMetierInterface;
-import com.sesame.MetierInterface.CompteMetierInterface;
+import com.sesame.MetierService.CompteMetierInterface;
+
 
 @RestController
 @RequestMapping("/Compte")

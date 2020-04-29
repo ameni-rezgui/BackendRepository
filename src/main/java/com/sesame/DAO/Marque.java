@@ -1,91 +1,62 @@
 package com.sesame.DAO;
 
 import java.io.Serializable;
-import java.util.Collection;
+import java.util.List;
 
-import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
 import javax.persistence.OneToMany;
-import javax.persistence.Table;
-
 @Entity
-@Table(name="Marque")
 public class Marque implements Serializable{
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private Long IdM; 
-	private String nom; 
-	private String modele; 
-	private String gamme; 
-	
-	  @OneToMany(mappedBy = "", cascade=CascadeType.ALL)
-	  
-	  private Collection<Vehicule> Vehicules;
-
-	public Long getIdM() {
-		return IdM;
+	private long ID_Marque;
+	private String Nom_marque;
+	private String Gamme;
+	private String TypeComerciale_M;
+	private String PaysOrigine;
+	@OneToMany(mappedBy = "marque")
+	private  List<vehicule>  vehicules;
+	public long getID_Marque() {
+		return ID_Marque;
 	}
-
-	public void setIdM(Long idM) {
-		IdM = idM;
+	public void setID_Marque(long iD_Marque) {
+		ID_Marque = iD_Marque;
 	}
-
-	public String getNom() {
-		return nom;
+	public String getNom_marque() {
+		return Nom_marque;
 	}
-
-	public void setNom(String nom) {
-		this.nom = nom;
+	public void setNom_marque(String nom_marque) {
+		Nom_marque = nom_marque;
 	}
-
-	public String getModele() {
-		return modele;
-	}
-
-	public void setModele(String modele) {
-		this.modele = modele;
-	}
-
 	public String getGamme() {
-		return gamme;
+		return Gamme;
 	}
-
 	public void setGamme(String gamme) {
-		this.gamme = gamme;
+		Gamme = gamme;
 	}
+	public String getTypeComerciale_M() {
+		return TypeComerciale_M;
+	}
+	public void setTypeComerciale_M(String typeComerciale_M) {
+		TypeComerciale_M = typeComerciale_M;
+	}
+	public String getPaysOrigine() {
+		return PaysOrigine;
+	}
+	public void setPaysOrigine(String paysOrigine) {
+		PaysOrigine = paysOrigine;
+	}
+	public List<vehicule> getVehicules() {
+		return vehicules;
+	}
+	public void setVehicules(List<vehicule> vehicules) {
+		this.vehicules = vehicules;
+	}
+	
 
-	public Collection<Vehicule> getVehicules() {
-		return Vehicules;
-	}
-
-	public void setVehicules(Collection<Vehicule> vehicules) {
-		Vehicules = vehicules;
-	}
-
-	public Marque(Long idM, String nom, String modele, String gamme, Collection<Vehicule> vehicules) {
-		super();
-		IdM = idM;
-		this.nom = nom;
-		this.modele = modele;
-		this.gamme = gamme;
-		Vehicules = vehicules;
-	}
-
-	public Marque() {
-		super();
-		// TODO Auto-generated constructor stub
-	}
-
-	@Override
-	public String toString() {
-		return "Marque [IdM=" + IdM + ", nom=" + nom + ", modele=" + modele + ", gamme=" + gamme + ", Vehicules="
-				+ Vehicules + "]";
-	}
-	  
-	  
+		
 
 }
