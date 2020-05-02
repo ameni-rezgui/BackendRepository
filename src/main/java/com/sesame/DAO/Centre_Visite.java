@@ -93,5 +93,23 @@ private List<Date_De_Travail> Date_De_Travails;
 	public void setCouloir(couloir couloir) {
 		this.couloir = couloir;
 	}
+	public Centre_Visite(long iD_Centre, String nom_Centre, String region_Centre, int longitude, int laltitude,
+			int nomber_Couloir, List<Reclamation> reclamation, com.sesame.DAO.couloir couloir,
+			List<Date_De_Travail> date_De_Travails) {
+		super();
+		ID_Centre = iD_Centre;
+		Nom_Centre = nom_Centre;
+		Region_Centre = region_Centre;
+		Longitude = longitude;
+		this.laltitude = laltitude;
+		Nomber_Couloir = nomber_Couloir;
+		this.reclamation = reclamation;
+		this.couloir = couloir;
+		Date_De_Travails = date_De_Travails;
+	}
+	public Centre_Visite() {
+		
+	}
+	
     
 }

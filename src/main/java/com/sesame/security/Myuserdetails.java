@@ -15,6 +15,7 @@ import com.sesame.DAO.Client;
 public class Myuserdetails implements UserDetails{
 	private String usrename;
 	private String password;
+	private Client client;
 	private  List<GrantedAuthority> authorities;
 	public Myuserdetails(Client s) {
 		this.usrename=s.getCompte().getLogin();
@@ -26,6 +27,16 @@ public class Myuserdetails implements UserDetails{
 		
 	}
 	
+
+	public Client getClient() {
+		return client;
+	}
+
+
+	public void setClient(Client client) {
+		this.client = client;
+	}
+
 
 	@Override
 	public Collection<? extends GrantedAuthority> getAuthorities() {
