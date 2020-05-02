@@ -6,12 +6,15 @@ import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
 
 import com.sesame.DAO.Centre_Visite;
 import com.sesame.DAO.Rendez_vous;
@@ -19,7 +22,9 @@ import com.sesame.DAO.vehicule;
 import com.sesame.MetierService.Centre_visiteMetierInterface;
 import com.sesame.MetierService.Rendez_VousMetierInterface;
 import com.sesame.MetierService.VehiculeMetierInterface;
-
+@RestController
+@RequestMapping("/rendez_vous")
+@CrossOrigin("*")
 public class rendez_vous {
 
 	@Autowired(required = false)
