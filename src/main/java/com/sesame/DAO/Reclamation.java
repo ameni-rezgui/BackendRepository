@@ -11,30 +11,34 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 @Entity
 public class Reclamation implements Serializable{
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private int Id_Rec;
-	private String Motife_Rec;
+	private Long Id_Rec;
+	private String Motif_Rec;
 	private String Message_Rec;
 	private String Piece_Jointe;
+	@JsonIgnore
 	@OneToMany(mappedBy = "reclamation")
 	private List<vehicule> vehicules;
+	@JsonIgnore
 	@ManyToOne
 	@JoinColumn(name = "centre_visite_id")
 	private Centre_Visite centre_Visite;
-	public int getId_Rec() {
+	public Long getId_Rec() {
 		return Id_Rec;
 	}
-	public void setId_Rec(int id_Rec) {
+	public void setId_Rec(Long id_Rec) {
 		Id_Rec = id_Rec;
 	}
-	public String getMotife_Rec() {
-		return Motife_Rec;
+	public String getMotif_Rec() {
+		return Motif_Rec;
 	}
-	public void setMotife_Rec(String motife_Rec) {
-		Motife_Rec = motife_Rec;
+	public void setMotif_Rec(String motif_Rec) {
+		Motif_Rec = motif_Rec;
 	}
 	public String getMessage_Rec() {
 		return Message_Rec;
@@ -61,5 +65,4 @@ public class Reclamation implements Serializable{
 		this.centre_Visite = centre_Visite;
 	}
 	
-
 }

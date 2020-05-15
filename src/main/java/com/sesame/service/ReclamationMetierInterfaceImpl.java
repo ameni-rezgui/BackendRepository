@@ -1,30 +1,32 @@
-package com.sesame.MetierInterface;
+package com.sesame.service;
 
 import java.util.List;
 
 import javax.transaction.Transactional;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
-import com.sesame.DAO.Date_De_Travail;
 import com.sesame.DAO.Message;
-import com.sesame.MetierService.MessageMetierInterface;
-import com.sesame.Repository.Date_de_travail_repository;
+import com.sesame.DAO.Reclamation;
+import com.sesame.MetierService.ReclamationMetierInterface;
 import com.sesame.Repository.Message_repository;
+import com.sesame.Repository.Reclamation_repository;
 
-public class MaesageMetierInterfaceImpl implements MessageMetierInterface {
+@Service
+public class ReclamationMetierInterfaceImpl implements ReclamationMetierInterface {
 
 	@Autowired
-	private Message_repository vr;
+	private Reclamation_repository vr;
 	@Transactional
 	@Override
-	public List<Message> getAll() {
+	public List<Reclamation> getAll() {
 		// TODO Auto-generated method stub
 		return vr.findAll();
 	}
 	@Transactional
 	@Override
-	public Message getId(long id) {
+	public Reclamation getId(long id) {
 		// TODO Auto-generated method stub
 		return vr.findById(id).get();
 	}
@@ -35,9 +37,8 @@ public class MaesageMetierInterfaceImpl implements MessageMetierInterface {
 	}
 	@Transactional
 	@Override
-	public Message add(Message Message) {
+	public Reclamation add(Reclamation Reclamation) {
 		// TODO Auto-generated method stub
-		return vr.save(Message);
+		return vr.save(Reclamation);
 	}
-
 }

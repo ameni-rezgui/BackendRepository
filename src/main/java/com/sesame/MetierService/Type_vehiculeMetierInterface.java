@@ -6,7 +6,7 @@ import org.springframework.stereotype.Service;
 
 import com.sesame.DAO.Type_vehicule;
 import com.sesame.DAO.vehicule;
-@Service
+
 public interface Type_vehiculeMetierInterface {
 	public Type_vehicule getId(long id);
 	public void delete(long id);

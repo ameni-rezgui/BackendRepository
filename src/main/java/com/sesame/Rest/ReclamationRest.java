@@ -50,7 +50,7 @@ public class ReclamationRest {
 	}
 	@PutMapping("edit/{id}")  // modification
 
-	public void update(@PathVariable int id , @RequestBody Reclamation Reclamation)
+	public void update(@PathVariable long id , @RequestBody Reclamation Reclamation)
 	
 	{
 		Reclamation.setId_Rec(id);

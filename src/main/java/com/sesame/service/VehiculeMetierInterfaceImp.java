@@ -1,4 +1,4 @@
-package com.sesame.MetierInterface;
+package com.sesame.service;
 
 import java.util.List;
 
@@ -7,35 +7,35 @@ import javax.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.sesame.DAO.Marque;
 import com.sesame.DAO.vehicule;
-import com.sesame.MetierService.MarqueMetierInterface;
-import com.sesame.Repository.Marque_repository;
+import com.sesame.MetierService.VehiculeMetierInterface;
+import com.sesame.Repository.vehicule_repository;
 @Service
-public class MarqueMetierInterfaceImpl implements MarqueMetierInterface {
+public class VehiculeMetierInterfaceImp implements VehiculeMetierInterface {
 	@Autowired
-	private Marque_repository mr;
+	private vehicule_repository vr;
 	@Transactional
 	@Override
-	public List<Marque> getAll() {
+	public List<vehicule> getAll() {
 		// TODO Auto-generated method stub
-		return mr.findAll();
+		return vr.findAll();
 	}
 	@Transactional
 	@Override
-	public Marque getId(long id) {
+	public vehicule getId(long id) {
 		// TODO Auto-generated method stub
-		return mr.findById(id).get();
+		return vr.findById(id).get();
 	}
 	@Transactional
 	@Override
 	public void delete(long id) {
-		mr.deleteById(id);		
+ vr.deleteById(id);		
 	}
 	@Transactional
 	@Override
-	public Marque add(Marque Marque) {
+	public vehicule add(vehicule Vehicule) {
 		// TODO Auto-generated method stub
-		return mr.save(Marque);
+		return vr.save(Vehicule);
 	}
+
 }

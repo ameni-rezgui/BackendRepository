@@ -30,7 +30,7 @@ public class securityConfiguration extends WebSecurityConfigurerAdapter{
 	}
 	@Override
 	protected void configure(HttpSecurity http) throws Exception {
-		http.cors();
+		http.cors().and().csrf().disable();
 		http
 		.authorizeRequests()
 		.antMatchers("all","/Client","/login").permitAll()
@@ -38,6 +38,7 @@ public class securityConfiguration extends WebSecurityConfigurerAdapter{
 		.antMatchers("user").hasRole("USER")
 		.and()
 		.formLogin()
+		
 		;
 	}
 	

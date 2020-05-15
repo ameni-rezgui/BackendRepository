@@ -11,6 +11,7 @@ import javax.persistence.JoinColumn;
 import javax.persistence.OneToOne;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 @Entity
 public class Rendez_vous implements Serializable{
@@ -22,10 +23,11 @@ public class Rendez_vous implements Serializable{
 	private  Date start;
 	// @JsonFormat(pattern="HH:mm")
 	private Date Heure;
+	@JsonIgnore
 	 @OneToOne
 	 @JoinColumn(name="vehicule_id")
 	 private vehicule vehicule;
-	 
+	@JsonIgnore
 	 @OneToOne
 	 @JoinColumn(name="couloir_id")
 	 private couloir couloir;

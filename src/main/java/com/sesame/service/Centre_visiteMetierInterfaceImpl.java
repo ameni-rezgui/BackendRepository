@@ -1,16 +1,17 @@
-package com.sesame.MetierInterface;
+package com.sesame.service;
 
 import java.util.List;
 
 import javax.transaction.Transactional;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import com.sesame.DAO.Centre_Visite;
 import com.sesame.DAO.vehicule;
 import com.sesame.MetierService.Centre_visiteMetierInterface;
 import com.sesame.Repository.Centre_Visite_Repository;
-
+@Service
 public class Centre_visiteMetierInterfaceImpl implements Centre_visiteMetierInterface {
 
 	@Autowired

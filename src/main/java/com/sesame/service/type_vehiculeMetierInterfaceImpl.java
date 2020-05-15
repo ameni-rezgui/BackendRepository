@@ -1,29 +1,33 @@
-package com.sesame.MetierInterface;
+package com.sesame.service;
 
 import java.util.List;
 
 import javax.transaction.Transactional;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
-import com.sesame.DAO.Reclamation;
 import com.sesame.DAO.Rendez_vous;
-import com.sesame.MetierService.Rendez_VousMetierInterface;
-import com.sesame.Repository.Reclamation_repository;
+import com.sesame.DAO.Type_vehicule;
+import com.sesame.DAO.vehicule;
+import com.sesame.MetierService.Type_vehiculeMetierInterface;
 import com.sesame.Repository.Rendezvous;
+import com.sesame.Repository.Type_vehicule_repository;
 
-public class rendez_vousMetierInterfaceImpl implements Rendez_VousMetierInterface {
+@Service
+public class type_vehiculeMetierInterfaceImpl implements Type_vehiculeMetierInterface {
+
 	@Autowired
-	private Rendezvous vr;
+	private Type_vehicule_repository vr;
 	@Transactional
 	@Override
-	public List<Rendez_vous> getAll() {
+	public List<Type_vehicule> getAll() {
 		// TODO Auto-generated method stub
 		return vr.findAll();
 	}
 	@Transactional
 	@Override
-	public Rendez_vous getId(long id) {
+	public Type_vehicule getId(long id) {
 		// TODO Auto-generated method stub
 		return vr.findById(id).get();
 	}
@@ -34,9 +38,7 @@ public class rendez_vousMetierInterfaceImpl implements Rendez_VousMetierInterfac
 	}
 	@Transactional
 	@Override
-	public Rendez_vous add(Rendez_vous Rendez_vous) {
+	public Type_vehicule add(Type_vehicule Type_vehicule) {
 		// TODO Auto-generated method stub
-		return vr.save(Rendez_vous);
-	}
-
+		return vr.save(Type_vehicule);	}
 }

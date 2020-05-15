@@ -7,7 +7,7 @@ import org.springframework.stereotype.Service;
 import com.sesame.DAO.Reclamation;
 import com.sesame.DAO.Type_vehicule;
 import com.sesame.DAO.vehicule;
-@Service
+
 public interface ReclamationMetierInterface {
 	public Reclamation getId(long id);
 	public void delete(long id);

@@ -1,4 +1,4 @@
-package com.sesame.MetierInterface;
+package com.sesame.service;
 
 import java.util.List;
 import java.util.Optional;

@@ -15,6 +15,9 @@ import javax.persistence.ManyToMany;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
+
 @Entity
 public class Client implements Serializable {
 	@Id
@@ -30,23 +33,22 @@ public class Client implements Serializable {
 	private String Ville_CL;
 	private String Code_postale_CL;
 	private String Numero_Permis_conduite_CL;
+	@JsonIgnore
 	@OneToOne(cascade = CascadeType.ALL)
 	@JoinColumn(name="Compte_ID")
 	private Compte compte;
+	@JsonIgnore
 	@OneToMany(
 			mappedBy = "client",
 			fetch = FetchType.LAZY)
 	private List<vehicule> vehicules ;
-	@ManyToMany(
-			fetch = FetchType.LAZY)
-			@JoinTable(
-					name="Client_Date_De_Travail",
+	
+	@OneToMany(
+			mappedBy = "client",
+			fetch = FetchType.LAZY
+			)
+	private List<ReclamationGenerique> reclamationg;
 
-					joinColumns=@JoinColumn(name="Clietn_id"),
-					inverseJoinColumns =@JoinColumn(name="Date_De_Travails_id")
-				
-					)		
-    private List<Date_De_Travail> Date_De_Travails;
 	public long getID_CL() {
 		return ID_CL;
 	}
@@ -125,16 +127,11 @@ public class Client implements Serializable {
 	public void setVehicules(List<vehicule> vehicules) {
 		this.vehicules = vehicules;
 	}
-	public List<Date_De_Travail> getDate_De_Travails() {
-		return Date_De_Travails;
-	}
-	public void setDate_De_Travails(List<Date_De_Travail> date_De_Travails) {
-		Date_De_Travails = date_De_Travails;
-	}
+
 	public Client(long iD_CL, String cin_CL, String nom_CL, String date_Naissance_CL, int age_CL, String numero_Tle_CL,
 			String email_CL, String region_CL, String ville_CL, String code_postale_CL,
-			String numero_Permis_conduite_CL, Compte compte, List<vehicule> vehicules,
-			List<Date_De_Travail> date_De_Travails) {
+			String numero_Permis_conduite_CL, Compte compte, List<vehicule> vehicules
+			) {
 		super();
 		ID_CL = iD_CL;
 		this.cin_CL = cin_CL;
@@ -149,7 +146,7 @@ public class Client implements Serializable {
 		Numero_Permis_conduite_CL = numero_Permis_conduite_CL;
 		this.compte = compte;
 		this.vehicules = vehicules;
-		Date_De_Travails = date_De_Travails;
+
 	}
 	public Client() {
 		

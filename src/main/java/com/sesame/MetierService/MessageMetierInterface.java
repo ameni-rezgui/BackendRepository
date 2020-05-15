@@ -7,7 +7,7 @@ import org.springframework.stereotype.Service;
 import com.sesame.DAO.Message;
 import com.sesame.DAO.Type_vehicule;
 import com.sesame.DAO.vehicule;
-@Service
+
 public interface MessageMetierInterface {
 	public Message getId(long id);
 	public void delete(long id);

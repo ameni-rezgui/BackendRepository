@@ -9,14 +9,14 @@ import com.sesame.Repository.ClientRepository;
 
 
 
-
 @SpringBootApplication
 @EnableJpaRepositories(basePackageClasses = ClientRepository.class)
 
 public class RendezVousPpeApplication {
-
+	
 	public static void main(String[] args) {
 		SpringApplication.run(RendezVousPpeApplication.class, args);
 	}
 
+	
 }

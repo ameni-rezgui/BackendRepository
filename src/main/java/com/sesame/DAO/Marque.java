@@ -8,6 +8,8 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
 @Entity
 public class Marque implements Serializable{
 	@Id
@@ -17,6 +19,7 @@ public class Marque implements Serializable{
 	private String Gamme;
 	private String TypeComerciale_M;
 	private String PaysOrigine;
+	@JsonIgnore
 	@OneToMany(mappedBy = "marque")
 	private  List<vehicule>  vehicules;
 	public long getID_Marque() {

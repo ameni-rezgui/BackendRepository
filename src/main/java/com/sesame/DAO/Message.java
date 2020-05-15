@@ -8,6 +8,8 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToOne;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 @Entity
 public class Message implements Serializable{
 	@Id
@@ -15,6 +17,7 @@ public class Message implements Serializable{
 	private long ID_Message;
 	private String Type_Message;
 	private String Corps_message;
+	@JsonIgnore
 	@OneToOne
 	private Client client;
 	public long getID_Message() {

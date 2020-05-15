@@ -7,7 +7,6 @@ import org.springframework.stereotype.Service;
 
 import com.sesame.DAO.Client;
 
-@Service
 public interface ClientMetierInterface {
 	public List<Client> getAll();
 	public Client getId(long id);

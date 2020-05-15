@@ -1,17 +1,18 @@
-package com.sesame.MetierInterface;
+package com.sesame.service;
 
 import java.util.List;
 
 import javax.transaction.Transactional;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import com.sesame.DAO.Chef_couloir;
 import com.sesame.DAO.couloir;
 import com.sesame.MetierService.Chef_CouloirMetierInterface;
 import com.sesame.Repository.Chef_couloir_repository;
 import com.sesame.Repository.couloir_repository;
-
+@Service
 public class Chef_couloirMetierInterfaceImpl implements Chef_CouloirMetierInterface {
 
 

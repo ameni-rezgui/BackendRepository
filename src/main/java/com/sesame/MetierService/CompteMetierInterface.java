@@ -5,7 +5,6 @@ import java.util.List;
 import org.springframework.stereotype.Service;
 
 import com.sesame.DAO.Compte;
-@Service
 
 public interface CompteMetierInterface {
 	public List<Compte> getAll();

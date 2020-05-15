@@ -12,6 +12,8 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToOne;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 @Entity
 public class vehicule implements Serializable{
 	@Id
@@ -29,19 +31,23 @@ public class vehicule implements Serializable{
     private String Compagnie_assurance_v;
     private int Prix_achat_V;
     private int Poids_V;
+    @JsonIgnore
     @ManyToOne(cascade = CascadeType.ALL)
     @JoinColumn(name="Client_Id")
     private Client client;
+    @JsonIgnore
     @ManyToOne
 	@JoinColumn(name = "Relamation_id")
     private Reclamation reclamation;
-    
+    @JsonIgnore
     @ManyToOne
     @JoinColumn(name = "marque_id")
     private Marque marque;
+    @JsonIgnore
     @ManyToOne
     @JoinColumn(name = "type_vehicule_id")
     private Type_vehicule type_vehicule;
+    @JsonIgnore
     @OneToOne(mappedBy = "vehicule")
     private Rendez_vous renRendez_vous;
 	public long getID_V() {
