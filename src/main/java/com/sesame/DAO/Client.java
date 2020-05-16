@@ -25,6 +25,7 @@ public class Client implements Serializable {
 	private long ID_CL; 
 	private String cin_CL;
 	private String Nom_CL;
+	private String prenom_CL;
 	private String Date_Naissance_CL;
 	private int Age_CL;
 	private String  Numero_Tle_CL;
@@ -33,10 +34,12 @@ public class Client implements Serializable {
 	private String Ville_CL;
 	private String Code_postale_CL;
 	private String Numero_Permis_conduite_CL;
-	@JsonIgnore
-	@OneToOne(cascade = CascadeType.ALL)
-	@JoinColumn(name="Compte_ID")
-	private Compte compte;
+	private String Login;
+	private String password;
+	private String roles;
+	private boolean Active;
+
+	
 	@JsonIgnore
 	@OneToMany(
 			mappedBy = "client",
@@ -115,27 +118,65 @@ public class Client implements Serializable {
 	public void setNumero_Permis_conduite_CL(String numero_Permis_conduite_CL) {
 		Numero_Permis_conduite_CL = numero_Permis_conduite_CL;
 	}
-	public Compte getCompte() {
-		return compte;
-	}
-	public void setCompte(Compte compte) {
-		this.compte = compte;
-	}
+
 	public List<vehicule> getVehicules() {
 		return vehicules;
 	}
 	public void setVehicules(List<vehicule> vehicules) {
 		this.vehicules = vehicules;
 	}
+	
+	
 
-	public Client(long iD_CL, String cin_CL, String nom_CL, String date_Naissance_CL, int age_CL, String numero_Tle_CL,
-			String email_CL, String region_CL, String ville_CL, String code_postale_CL,
-			String numero_Permis_conduite_CL, Compte compte, List<vehicule> vehicules
-			) {
+	public String getLogin() {
+		return Login;
+	}
+	public void setLogin(String login) {
+		Login = login;
+	}
+	public String getPassword() {
+		return password;
+	}
+	public void setPassword(String password) {
+		this.password = password;
+	}
+	public String getRoles() {
+		return roles;
+	}
+	public void setRoles(String roles) {
+		this.roles = roles;
+	}
+	public boolean isActive() {
+		return Active;
+	}
+	public void setActive(boolean active) {
+		Active = active;
+	}
+	public String getPrenom_CL() {
+		return prenom_CL;
+	}
+	public void setPrenom_CL(String prenom_CL) {
+		this.prenom_CL = prenom_CL;
+	}
+	public List<ReclamationGenerique> getReclamationg() {
+		return reclamationg;
+	}
+	public void setReclamationg(List<ReclamationGenerique> reclamationg) {
+		this.reclamationg = reclamationg;
+	}
+
+	public Client() {
+		
+	}
+	public Client(long iD_CL, String cin_CL, String nom_CL, String prenom_CL, String date_Naissance_CL, int age_CL,
+			String numero_Tle_CL, String email_CL, String region_CL, String ville_CL, String code_postale_CL,
+			String numero_Permis_conduite_CL, String login, String password, String roles, boolean active,
+			List<vehicule> vehicules, List<ReclamationGenerique> reclamationg) {
 		super();
 		ID_CL = iD_CL;
 		this.cin_CL = cin_CL;
 		Nom_CL = nom_CL;
+		this.prenom_CL = prenom_CL;
 		Date_Naissance_CL = date_Naissance_CL;
 		Age_CL = age_CL;
 		Numero_Tle_CL = numero_Tle_CL;
@@ -144,13 +185,15 @@ public class Client implements Serializable {
 		Ville_CL = ville_CL;
 		Code_postale_CL = code_postale_CL;
 		Numero_Permis_conduite_CL = numero_Permis_conduite_CL;
-		this.compte = compte;
+		Login = login;
+		this.password = password;
+		this.roles = roles;
+		Active = active;
 		this.vehicules = vehicules;
-
+		this.reclamationg = reclamationg;
 	}
-	public Client() {
-		
-	}
+	
+	
 	
 
 	

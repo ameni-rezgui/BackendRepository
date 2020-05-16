@@ -18,9 +18,9 @@ public class Myuserdetails implements UserDetails{
 	private Client client;
 	private  List<GrantedAuthority> authorities;
 	public Myuserdetails(Client s) {
-		this.usrename=s.getCompte().getLogin();
-		this.password=s.getCompte().getPassword();
-		this.authorities = Arrays.stream(s.getCompte().getRoles().split(","))
+		this.usrename= s.getLogin();
+		this.password=s.getPassword();
+		this.authorities = Arrays.stream(s.getRoles().split(","))
 				.map(SimpleGrantedAuthority::new)
 				.collect(Collectors.toList());
 				

@@ -26,10 +26,11 @@ public class Chef_couloir implements Serializable {
 	private String Email_Ch;
 	private String region_Ch;
 	private int CIN;
-	@JsonIgnore
-	@OneToOne
-	@JoinColumn(name = "Compte_id")
-	private Compte compte;
+	private String Login;
+	private String password;
+	private String roles;
+	private boolean Active;
+
 	@JsonIgnore
 	@OneToOne(mappedBy = "chef_couloir")
 	private couloir couloir;
@@ -83,20 +84,45 @@ public class Chef_couloir implements Serializable {
 	public void setCIN(int cIN) {
 		CIN = cIN;
 	}
-	public Compte getCompte() {
-		return compte;
-	}
-	public void setCompte(Compte compte) {
-		this.compte = compte;
-	}
+
 	public couloir getCouloir() {
 		return couloir;
 	}
 	public void setCouloir(couloir couloir) {
 		this.couloir = couloir;
 	}
+	
+	public String getLogin() {
+		return Login;
+	}
+	public void setLogin(String login) {
+		Login = login;
+	}
+	public String getPassword() {
+		return password;
+	}
+	public void setPassword(String password) {
+		this.password = password;
+	}
+	public String getRoles() {
+		return roles;
+	}
+	public void setRoles(String roles) {
+		this.roles = roles;
+	}
+	public boolean isActive() {
+		return Active;
+	}
+	public void setActive(boolean active) {
+		Active = active;
+	}
+	public Chef_couloir() {
+		super();
+		// TODO Auto-generated constructor stub
+	}
 	public Chef_couloir(long iD_CL, String nom_Ch, String prenom_Ch, String diplome, String numero_Tle_Ch,
-			String email_Ch, String region_Ch, int cIN, Compte compte, com.sesame.DAO.couloir couloir) {
+			String email_Ch, String region_Ch, int cIN, String login, String password, String roles, boolean active,
+			com.sesame.DAO.couloir couloir) {
 		super();
 		ID_CL = iD_CL;
 		Nom_Ch = nom_Ch;
@@ -106,18 +132,11 @@ public class Chef_couloir implements Serializable {
 		Email_Ch = email_Ch;
 		this.region_Ch = region_Ch;
 		CIN = cIN;
-		this.compte = compte;
+		Login = login;
+		this.password = password;
+		this.roles = roles;
+		Active = active;
 		this.couloir = couloir;
-	}
-	public Chef_couloir() {
-		super();
-		// TODO Auto-generated constructor stub
-	}
-	@Override
-	public String toString() {
-		return "Chef_couloir [ID_CL=" + ID_CL + ", Nom_Ch=" + Nom_Ch + ", Prenom_Ch=" + Prenom_Ch + ", Diplome="
-				+ Diplome + ", Numero_Tle_Ch=" + Numero_Tle_Ch + ", Email_Ch=" + Email_Ch + ", region_Ch=" + region_Ch
-				+ ", CIN=" + CIN + ", compte=" + compte + ", couloir=" + couloir + "]";
 	}
 	
 	

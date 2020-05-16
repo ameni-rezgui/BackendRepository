@@ -30,7 +30,7 @@ public class authenticationRest {
 	public ResponseEntity<UserDTO> login(@RequestBody Client user ,HttpServletRequest resuest,HttpServletResponse response)
 	{   try {
 		
-		  Authentication  authentication = authenticationManager.authenticate(new UsernamePasswordAuthenticationToken(user.getNom_CL(), user.getCompte().getPassword()));
+		  Authentication  authentication = authenticationManager.authenticate(new UsernamePasswordAuthenticationToken(user.getNom_CL(), user.getPassword()));
 		  final Myuserdetails userdetail = (Myuserdetails)authentication.getPrincipal();
 		  SecurityContextHolder.getContext().setAuthentication(authentication);
 		  final String token =jwtTokenUtil.genereateTOken(userdetail);
