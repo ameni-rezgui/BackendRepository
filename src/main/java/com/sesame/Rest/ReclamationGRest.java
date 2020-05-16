@@ -13,32 +13,33 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.sesame.DAO.Compte;
-import com.sesame.MetierService.CompteMetierInterface;
+
+import com.sesame.DAO.ReclamationGenerique;
+import com.sesame.MetierService.ReclamationG_MetierInterface;
 
 
 @RestController
-@RequestMapping("/Compte")
+@RequestMapping("/ReclamationG")
 @CrossOrigin("*")
-public class CompteRest {
-
+public class ReclamationGRest {
+	
 	@Autowired
-	private  CompteMetierInterface CF;
+	private  ReclamationG_MetierInterface CF;
 	
 	
 	@PostMapping("/add") 
-	public void save(@RequestBody Compte compte)
+	public void save(@RequestBody ReclamationGenerique Reclamation)
 	
-	{	CF.add(compte);
+	{	CF.add(Reclamation);
 	}
 	
 	@GetMapping("/get")
-	public Collection<Compte> findALL()
+	public Collection<ReclamationGenerique> findALL()
 	{
 		return CF.getAll();
 	}
 	@GetMapping("/get/{id}")
-	public Compte findById(@PathVariable Long id)
+	public ReclamationGenerique findById(@PathVariable Long id)
 	{
 		return CF.getId(id);
 	}
@@ -49,13 +50,15 @@ public class CompteRest {
 	
 		CF.delete(id);
 	}
+	
 	@PutMapping("edit/{id}")  // modification
-
-	public void update(@PathVariable Long id , @RequestBody Compte compte)
+	public void update(@PathVariable long id , @RequestBody ReclamationGenerique Reclamation)
 	
 	{
-		compte.setId(id);
-		CF.add(compte)	;
+		Reclamation.setId_Rec(id);
+		CF.add(Reclamation)	;
 	}
+
 	
+
 }
