@@ -22,7 +22,7 @@ public class Chef_couloir implements Serializable {
 	private String Prenom_Ch;
 	private String Diplome;
 	@Column(name="Numéro_tel")
-	private String  Numero_Tle_Ch;
+	private String  Numero_Tel_Ch;
 	private String Email_Ch;
 	private String region_Ch;
 	private int CIN;
@@ -60,10 +60,10 @@ public class Chef_couloir implements Serializable {
 		Diplome = diplome;
 	}
 	public String getNumero_Tle_Ch() {
-		return Numero_Tle_Ch;
+		return Numero_Tel_Ch;
 	}
 	public void setNumero_Tle_Ch(String numero_Tle_Ch) {
-		Numero_Tle_Ch = numero_Tle_Ch;
+		Numero_Tel_Ch = numero_Tle_Ch;
 	}
 	public String getEmail_Ch() {
 		return Email_Ch;
@@ -128,7 +128,7 @@ public class Chef_couloir implements Serializable {
 		Nom_Ch = nom_Ch;
 		Prenom_Ch = prenom_Ch;
 		Diplome = diplome;
-		Numero_Tle_Ch = numero_Tle_Ch;
+		Numero_Tel_Ch = numero_Tle_Ch;
 		Email_Ch = email_Ch;
 		this.region_Ch = region_Ch;
 		CIN = cIN;
