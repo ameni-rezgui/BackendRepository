@@ -18,10 +18,12 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.sesame.DAO.Centre_Visite;
 import com.sesame.DAO.Rendez_vous;
+import com.sesame.DAO.couloir;
 import com.sesame.DAO.vehicule;
 import com.sesame.MetierService.Centre_visiteMetierInterface;
 import com.sesame.MetierService.Rendez_VousMetierInterface;
 import com.sesame.MetierService.VehiculeMetierInterface;
+import com.sesame.MetierService.coulirMetierInterface;
 @RestController
 @RequestMapping("/rendez_vous")
 @CrossOrigin("*")
@@ -32,18 +34,18 @@ public class rendez_vous {
 	@Autowired
 	private VehiculeMetierInterface VF;
 	@Autowired
-	private Centre_visiteMetierInterface CVF;
+	private Centre_visiteMetierInterface COF;
 	
 
-	@PostMapping("/add/{idvehicule}/{idcentre}")
+	@PostMapping("/add/{idv}/{idc}")
 	public Rendez_vous save(@RequestBody Rendez_vous rdv, @PathVariable long idv, @PathVariable long idc)
 	{
 		if (rdv != null) {
 			vehicule vh= new vehicule();
 			Centre_Visite CV=new Centre_Visite();
 			vh=VF.getId(idv);
-			CV=CVF.getId(idc);
-			rdv.setCentre_ID(idc);
+			CV=COF.getId(idc);
+			rdv.setCentre_Visite(CV);
 			rdv.setVehicule(vh);
 			return CF.add(rdv);
 		}
@@ -65,7 +67,7 @@ public class rendez_vous {
 
 		Rendez_vous rdv = CF.getId(Id);
 
-		CF.delete(rdv.getCentre_ID());
+		CF.delete(rdv.getIdr());
 
 		return ResponseEntity.ok().build();
 	}

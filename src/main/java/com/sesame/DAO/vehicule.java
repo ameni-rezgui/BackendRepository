@@ -2,6 +2,7 @@ package com.sesame.DAO;
 
 import java.io.Serializable;
 import java.util.Date;
+import java.util.List;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
@@ -10,9 +11,11 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 @Entity
 public class vehicule implements Serializable{
@@ -31,25 +34,28 @@ public class vehicule implements Serializable{
     private String Compagnie_assurance_v;
     private int Prix_achat_V;
     private int Poids_V;
-    @JsonIgnore
+    
     @ManyToOne(cascade = CascadeType.ALL)
     @JoinColumn(name="Client_Id")
     private Client client;
-    @JsonIgnore
+    
     @ManyToOne
 	@JoinColumn(name = "Relamation_id")
     private Reclamation reclamation;
-    @JsonIgnore
+    
     @ManyToOne
     @JoinColumn(name = "marque_id")
     private Marque marque;
-    @JsonIgnore
+    
     @ManyToOne
     @JoinColumn(name = "type_vehicule_id")
     private Type_vehicule type_vehicule;
-    @JsonIgnore
-    @OneToOne(mappedBy = "vehicule")
-    private Rendez_vous renRendez_vous;
+	
+   
+
+    @OneToMany(mappedBy = "vehicule")
+    private List<Rendez_vous> renRendez_vous;
+    
 	public long getID_V() {
 		return ID_V;
 	}
@@ -152,12 +158,12 @@ public class vehicule implements Serializable{
 	public void setType_vehicule(Type_vehicule type_vehicule) {
 		this.type_vehicule = type_vehicule;
 	}
-	public Rendez_vous getRenRendez_vous() {
+	public List<Rendez_vous> getRenRendez_vous() {
 		return renRendez_vous;
 	}
-	public void setRenRendez_vous(Rendez_vous renRendez_vous) {
+	public void setRenRendez_vous(List<Rendez_vous> renRendez_vous) {
 		this.renRendez_vous = renRendez_vous;
 	}
-    
+
 
 }

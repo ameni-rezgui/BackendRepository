@@ -1,43 +1,43 @@
 package com.sesame.DAO;
 
 import java.io.Serializable;
-import java.sql.Date;
+import java.util.Date;
 
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.OneToOne;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 @Entity
 public class Rendez_vous implements Serializable{
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
-	private long Centre_ID;
-	
-	 //@JsonFormat(pattern="HH:mm:ss")
+	private long idr;
 	private  Date start;
-	// @JsonFormat(pattern="HH:mm")
-	private Date Heure;
-	@JsonIgnore
-	 @OneToOne
+	private String Heure;
+	 @JsonIgnore
+	 @ManyToOne(fetch = FetchType.LAZY)
 	 @JoinColumn(name="vehicule_id")
 	 private vehicule vehicule;
-	@JsonIgnore
-	 @OneToOne
-	 @JoinColumn(name="couloir_id")
-	 private couloir couloir;
+	 
+	 @ManyToOne
+	 @JoinColumn(name="Centre")
+	 private Centre_Visite centre_Visite;
 
-	public long getCentre_ID() {
-		return Centre_ID;
+	public long getIdr() {
+		return idr;
 	}
 
-	public void setCentre_ID(long centre_ID) {
-		Centre_ID = centre_ID;
+	public void setIdr(long idr) {
+		this.idr = idr;
 	}
 
 	public Date getStart() {
@@ -48,11 +48,11 @@ public class Rendez_vous implements Serializable{
 		this.start = start;
 	}
 
-	public Date getHeure() {
+	public String getHeure() {
 		return Heure;
 	}
 
-	public void setHeure(Date heure) {
+	public void setHeure(String heure) {
 		Heure = heure;
 	}
 
@@ -63,13 +63,31 @@ public class Rendez_vous implements Serializable{
 	public void setVehicule(vehicule vehicule) {
 		this.vehicule = vehicule;
 	}
-
-	public couloir getCouloir() {
-		return couloir;
+	
+	public Centre_Visite getCentre_Visite() {
+		return centre_Visite;
 	}
 
-	public void setCouloir(couloir couloir) {
-		this.couloir = couloir;
+	public void setCentre_Visite(Centre_Visite centre_Visite) {
+		this.centre_Visite = centre_Visite;
 	}
+
+	public Rendez_vous(long idr, Date start, String heure, com.sesame.DAO.vehicule vehicule,
+			Centre_Visite centre_Visite) {
+		super();
+		this.idr = idr;
+		this.start = start;
+		Heure = heure;
+		this.vehicule = vehicule;
+		this.centre_Visite = centre_Visite;
+	}
+
+	public Rendez_vous() {
+		super();
+		// TODO Auto-generated constructor stub
+	}
+
+	
+	
 
 }
