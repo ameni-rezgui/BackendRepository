@@ -83,4 +83,8 @@ public class rendez_vous {
 		Rendez_vous updatedrdv = CF.add(rdv);
 		return updatedrdv;
 	}
+	@GetMapping("/getcentre/{idcentre}")
+	public Collection<Rendez_vous> rechercheparcentre(@PathVariable Long idcentre) {
+		return CF.Recherchecentre(idcentre);
+	}
 }

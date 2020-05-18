@@ -1,5 +1,6 @@
 package com.sesame.service;
 
+import java.util.Collection;
 import java.util.List;
 
 import javax.transaction.Transactional;
@@ -12,6 +13,7 @@ import com.sesame.DAO.Rendez_vous;
 import com.sesame.MetierService.Rendez_VousMetierInterface;
 import com.sesame.Repository.Reclamation_repository;
 import com.sesame.Repository.Rendezvous;
+import com.sesame.Rest.rendez_vous;
 
 @Service
 public class rendez_vousMetierInterfaceImpl implements Rendez_VousMetierInterface {
@@ -40,5 +42,12 @@ public class rendez_vousMetierInterfaceImpl implements Rendez_VousMetierInterfac
 		// TODO Auto-generated method stub
 		return vr.save(Rendez_vous);
 	}
+	@Override
+	public Collection<Rendez_vous> Recherchecentre(long a) {
+		// TODO Auto-generated method stub
+		return vr.Recherche(a);
+	}
+
+
 
 }
