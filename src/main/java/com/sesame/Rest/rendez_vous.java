@@ -1,10 +1,12 @@
 package com.sesame.Rest;
 
 import java.util.Collection;
+import java.util.Date;
 
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -40,7 +42,8 @@ public class rendez_vous {
 	@PostMapping("/add/{idv}/{idc}")
 	public Rendez_vous save(@RequestBody Rendez_vous rdv, @PathVariable long idv, @PathVariable long idc)
 	{
-		if (rdv != null) {
+		
+
 			vehicule vh= new vehicule();
 			Centre_Visite CV=new Centre_Visite();
 			vh=VF.getId(idv);
@@ -48,8 +51,7 @@ public class rendez_vous {
 			rdv.setCentre_Visite(CV);
 			rdv.setVehicule(vh);
 			return CF.add(rdv);
-		}
-		return null;
+
 	}
 
 	@GetMapping("/get")
@@ -87,4 +89,11 @@ public class rendez_vous {
 	public Collection<Rendez_vous> rechercheparcentre(@PathVariable Long idcentre) {
 		return CF.Recherchecentre(idcentre);
 	}
+	
+	
+	  @GetMapping("/getrdvexixt/{idcentre}/{start}")
+	  public int rechercheparcentre(@PathVariable Long
+	  idcentre,@PathVariable @DateTimeFormat(pattern="yyyy-MM-dd") String start) {
+	  return CF.Recherchedejaexit(idcentre,start); }
+	 
 }

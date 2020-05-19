@@ -1,6 +1,7 @@
 package com.sesame.MetierService;
 
 import java.util.Collection;
+import java.util.Date;
 import java.util.List;
 
 import org.springframework.stereotype.Service;
@@ -15,5 +16,6 @@ public interface Rendez_VousMetierInterface {
 	public void delete(long id);
 	public  Rendez_vous add(Rendez_vous Rendez_vous);
 	public List<Rendez_vous> getAll();
-	public Collection<Rendez_vous> Recherchecentre(long a);
+	 public Collection<Rendez_vous> Recherchecentre(long a); 
+	 public int Recherchedejaexit(long a,String start); 
 }

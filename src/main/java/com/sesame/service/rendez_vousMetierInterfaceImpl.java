@@ -1,6 +1,7 @@
 package com.sesame.service;
 
 import java.util.Collection;
+import java.util.Date;
 import java.util.List;
 
 import javax.transaction.Transactional;
@@ -42,11 +43,15 @@ public class rendez_vousMetierInterfaceImpl implements Rendez_VousMetierInterfac
 		// TODO Auto-generated method stub
 		return vr.save(Rendez_vous);
 	}
-	@Override
-	public Collection<Rendez_vous> Recherchecentre(long a) {
-		// TODO Auto-generated method stub
-		return vr.Recherche(a);
-	}
+	
+	  @Override public Collection<Rendez_vous> Recherchecentre(long a) { // TODO
+	 // Auto-generated method stub 
+		  return vr.Recherche(a); }
+	  
+	  @Override public int Recherchedejaexit(long a, String s) { // TODO
+	  //Auto-generated method stub
+	  return vr.recherchecentrestart(a,s); }
+	 
 
 
 
